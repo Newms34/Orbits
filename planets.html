@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="planets.css" />
+        <!-- TO DO:
+            -Add script for magnifying glass that maneuvers it onto each planet moon.
+            -For moons, do we wanna 'freeze' each moon as it's selected (i.e., set style.animate = none)?
+            -Set so that clicking moons on the menu moves to MOONS, not PLANETS.
+            -Either join scrollMe() and facts() together, OR have one call the other
+        -->
+    </head>
+    
+    <body>
+        <ul id='nav'>
+            <li onclick="magMove(0);">Sun</li>
+            <li onclick="magMove(1);">Mercury</li>
+            <li onclick="magMove(2);">Venus</li>
+            <li onclick="magMove(3);">Earth
+                <ul>
+                    <li onclick='magMove(4);moonFrz(0);'>Moon</li>
+                </ul>
+            </li>
+            <li onclick="magMove(5)">Mars
+                <ul>
+                    <li onclick='magMove(6);moonFrz(1);'>Phobos</li>
+                    <li onclick='magMove(7);moonFrz(2);'>Deimos</li>
+                </ul>
+            </li>
+            <li onclick="magMove(8);">Asteroid Belt
+                <ul>
+                    <li onclick='magMove(9);'>Ceres</li>
+                </ul>
+            </li>
+            <li onclick="magMove(10);">Jupiter
+                <ul>
+                    <li onclick='magMove(11);moonFrz(3);'>Io</li>
+                    <li onclick='magMove(12);moonFrz(4);'>Europa</li>
+                    <li onclick='magMove(13);moonFrz(5);'>Ganymede</li>
+                    <li onclick='magMove(14);moonFrz(6);'>Callisto</li>
+                </ul>
+            </li>
+            <li onclick="magMove(15);">Saturn
+                <ul>
+                    <li onclick='magMove(16);moonFrz(7);'>Titan</li>
+                    <li onclick='magMove(17);moonFrz(8);'>Rhea</li>
+                    <li onclick='magMove(18);moonFrz(9);'>Iapetus</li>
+                    <li onclick='magMove(19);moonFrz(10);'>Dione</li>
+                </ul>
+            </li>
+            <li onclick="magMove(20);">Uranus
+                <ul>
+                    <li onclick='magMove(21);moonFrz(11);'>Titania</li>
+                    <li onclick='magMove(22);moonFrz(12);'>Oberon</li>
+                    <li onclick='magMove(23);moonFrz(13);'>Umbriel</li>
+                    <li onclick='magMove(24);moonFrz(14);'>Ariel</li>
+                </ul>
+            </li>
+            <li onclick="magMove(25);">Neptune
+                <ul>
+                    <li onclick='magMove(26);moonFrz(15);'>Triton</li>
+                </ul>
+            </li>
+            <li onclick="magMove(27)">Pluto
+                <ul>
+                    <li onclick='magMove(28);moonFrz(16);'>Charon</li>
+                </ul>
+            </li>
+        </ul>
+    <div id='solarSys'>
+        <div id='stars2'>
+            <div id="sun"></div>
+            <div id="merc"><div class='planLbl'>MERCURY</div></div>
+            <div id="venus"><div class='planLbl'>VENUS</div></div>
+            <div id="earth"><div class='planLbl'>EARTH</div>
+                <div class='moonOrb'>
+                    <div id='Moon' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="mars"><div class='planLbl'>MARS</div>
+                <div class='moonOrb'>
+                    <div id='Phobos' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Deimos' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="ast"><div class='planLbl'>ASTEROID BELT</div>
+                <div id='Ceres'><div class='planLbl'>CERES</div></div>
+            </div>
+            <div id="jupiter"><div class='planLbl'>JUPITER</div>
+                <div class='moonOrb'>
+                    <div id='Io' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Europa' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Ganymede' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Callisto' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="saturn">
+                <div id='satRings'></div>
+                <div class='planLbl'>SATURN</div>
+                <div class='moonOrb'>
+                    <div id='Titan' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Rhea' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Iapetus' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Dione' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="uranus"><div class='planLbl'>URANUS</div>
+                <div class='moonOrb'>
+                    <div id='Titania' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Oberon' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Umbriel' class='moon'><div class='moonLbl'></div></div>
+                </div>
+                <div class='moonOrb'>
+                    <div id='Ariel' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="neptune"><div class='planLbl'>NEPTUNE</div>
+                <div class='moonOrb'>
+                    <div id='Triton' class='moon'><div class='moonLbl'></div></div>
+                </div>
+            </div>
+            <div id="pluto"><div class='planLbl'>PLUTO</div>
+                    <div id='chOrb'>
+                        <div id='Charon'><div class='moonLbl' style='animation: spin-right 31s linear reverse infinite;animation-delay: 2s;'>Charon</div></div>
+                        <div id='pl'></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+        <div id='meter'>
+            <div id='marker'></div>
+            <div id='meterLbl'>Distance from sun: 0 kilometers.</div>
+            <div id='scales'><u>Scale:</u><br/> 1 pixel is 559.94 km<br/>1 second is 4:23:44:57.13 in real time.<br/>Travel Speed: 475,439km/s (1,063,526,750 mph) </div>
+        </div>
+<!--begin tie-->
+<div id='tie'>
+    <div class='wingO'>
+        <div class='wingLeftO'></div><div class='wingMainO'></div><div class='wingRightO'></div>
+        <div class='wingI'>
+            <div class='wingLeftI'></div><div class='wingMainI'></div><div class='wingRightI'></div>
+        </div>
+    </div>
+    <div class='wingO' style='top:-190px;left:70px;z-index:98;'>
+        <div class='wingLeftO'></div><div class='wingMainO' style='width:100px;left:-1px;position:relative'></div><div class='wingRightO'></div>
+        <div class='wingI' style='top:-205px;left:1px;z-index:99;'>
+            <div class='wingLeftI'></div><div class='wingMainI'></div><div class='wingRightI'></div>
+        </div>
+        <div id='wingBarH'></div>
+        <div id='wingBarR'></div>
+        <div id='wingBarL'></div>
+        <div id='wingCenter'></div>
+    </div>
+    
+    
+
+    <div id='bodyMain'><div id='bodyWin'>
+    <div id='winH'></div><div id='winV'></div>
+    <div id='winL'></div><div id='winR'></div>
+    </div></div>
+
+</div>
+<!--end tie-->
+
+<div id='info'>
+    Object Data<hr/>
+    Name:<div class='infoDat'>Sun</div>
+    Orbital Radius (average):<div class='infoDat'>N/A</div>
+    Diameter:<div class='infoDat'>1391000 km</div>
+    Name Origin:<div class='infoDat'>'Sun' ultimately comes from proto-Germanic "sunnon", which means... 'sun'. No surprise there.</div>
+    Notes:<div class='infoDat'>In about 5.4 billion years, the sun will expand to about 200 times its current size. Time to look for other real-estate!</div>
+</div>
+<!--magnifying glass-->
+<div id='mag'>
+    <div id ='magRim'><div id='magLens'></div></div>
+    <div id='magHandle'></div>
+</div>
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="jquery.scrollTo-1.4.11/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="jQueryRotate.js"></script>
+<script type="text/javascript">
+var adjOrb = [1,125244,234300,322760,323176,493910,493910,493910,1091161,897137,1687849,1688300,1688570,1688992,1689888,3107840,3109157,3108416,3111700,3108241,6237094,6237570,6237721,6237382,6237302,9764338,9764715,12736025,12736050];//orbitz (all of dem)
+        function scrollMe(obj){
+            var oldPos = document.documentElement.scrollLeft;
+            var thisPos = adjOrb[obj]-64;
+            if (oldPos != thisPos) {
+                var dist = Math.abs(thisPos-oldPos);//the distance 
+                var vel = 12736339/ 30000;//the speed: to pluto in 15s
+                var timeTo = dist/vel;//the time
+                //make sure you're not scrolling to the same planet!
+                $.scrollTo(thisPos,timeTo,{axis:'x'});
+                var t1=setTimeout(function(){magOut(obj)},timeTo);
+            }
+            
+        }
+window.onload = function() {
+    moonPos(99);
+
+  window.onscroll = function() {
+    //first, get x pos
+    var posX = (document.documentElement.scrollLeft) ? document.documentElement.scrollLeft : window.pageXOffset
+    var bgPosX = Math.floor(-posX*0.0001);
+    var sPosX = Math.floor(-posX*0.0002);
+    var mPosX = Math.floor((posX/12736340)*100);
+    var metPosX = Math.floor(posX*(5874000000/12736340));
+    document.body.style.backgroundPosition = bgPosX+'px 0%';
+    document.getElementById('stars2').style.backgroundPosition = sPosX+'px 0%';
+    document.getElementById('marker').style.left = mPosX+'%';
+    document.getElementById('meterLbl').innerHTML = 'Distance from sun: ' +metPosX+ ' kilometers.';
+  }
+}
+var moonSpeeds = [136,2,7,8,17,35,83,79,22,396,13,43,67,20,12,29];//orbital speeds
+var moonOrbClass = document.getElementsByClassName('moonOrb');
+var moonLblClass = document.getElementsByClassName('moonLbl');
+
+function moonFrz(watMoon){
+    moonPos(watMoon);
+    
+}
+function moonPos(inMoon) {
+    document.documentElement.scrollTop = 0;
+    //this positions the moons on page load
+    var moonOrbs = [834,21,51,915,1455,2321,4083,2650,1143,7719,818,946,1266,578,415,770];//the array of moon orbit radii
+    var planRads = [14,8,8,152,152,152,152,131,131,131,131,56,56,56,56,54]; //Planet radii
+    var moonNames = ['Moon','Phobos','Deimos','Io','Europa','Ganymede','Callisto','Titan','Rhea','Iapetus','Dione','Titania','Oberon','Umbriel','Ariel','Triton'];//moon names, mainly for div refs
+    var moonDias = [8,1,1,8,7,12,11,12,4,4,3,4,4,3,3,6];//moon diameters
+    var moonCols = ['#ccc','#c99','#ccc','#b90','#dcdcff','#999','#975','#ca3','#ca9','#ddd','#555','#ccc','#c1c1c1','#ca4','#cba','#d3aa81'];//moon colors
+    for (var t=0;t<moonOrbs.length;t++){
+        //reset everything
+        moonLblClass[t].style.transform = 'rotate(0deg)';
+        moonOrbClass[t].style.transform = 'rotate(0deg)';
+    }
+    for (var m=0;m<moonOrbs.length;m++){
+        moonOrbClass[m].style.width = moonOrbs[m]+'px';
+        moonOrbClass[m].style.height = moonOrbs[m]+'px';
+        moonOrbClass[m].style.left = -Math.floor((.5*moonOrbs[m])-(.5*planRads[m]))+'px';
+        moonOrbClass[m].style.top = -Math.floor((.5*moonOrbs[m])-.5*    planRads[m])+'px';
+        moonLblClass[m].innerHTML = moonNames[m];
+        moonOrbClass[m].style.animationDelay = '2s';
+        moonOrbClass[m].style.animation = 'spin-right '+moonSpeeds[m]+'s linear infinite';        
+        moonLblClass[m].style.animationDelay = '2s';
+        moonLblClass[m].style.animation = 'spin-right '+moonSpeeds[m]+'s linear infinite';
+        moonLblClass[m].style.animationDirection = 'reverse';
+        document.getElementById(moonNames[m]).style.left = -Math.floor(moonDias[m]/2)+'px';
+        document.getElementById(moonNames[m]).style.width = moonDias[m]+'px';
+        document.getElementById(moonNames[m]).style.height = moonDias[m]+'px';
+        document.getElementById(moonNames[m]).style.backgroundColor = moonCols[m];
+    }
+    if (inMoon!=99) {
+        moonOrbClass[inMoon].style.animation='none';
+        moonOrbClass[inMoon].style.transform='rotate(180deg)';
+        moonLblClass[inMoon].style.transform = 'rotate(180deg)';
+        moonLblClass[inMoon].style.animation = 'none';
+    }
+}
+var allNames = ['Sun','Mercury','Venus','Earth','Moon','Mars','Phobos','Deimos','Asteroid Belt','Ceres','Jupiter','Io','Europa','Ganymede','Callisto','Saturn','Titan','Rhea','Iapetus','Dione','Uranus','Titania','Oberon','Umbriel','Ariel','Neptune','Triton','Pluto','Charon'];
+var dataBoxes = document.getElementsByClassName('infoDat');
+var orbiDist = [2.70E+020,57910000000,108200000000,149000000000,384399000,227939100000,9376000,23463200,503243150000,413910000000,778547200000,421700000,671034000,1070412000,1882709000,1433449370000,1222000000,527000000,3560000000,377000000,2876679082000,435910000,583520000,266300000,191020000,4503443661000,354759000,5874000000000,19571000];//ACTUAL orbit dists
+var width = [696342000,2439700,6052000,6371000,3474000,3396200,22532,12400,178637184000,487300,69911000,3642600,3121600,5262400,4820600,60268000,5150000,1527000,1470000,1123000,25559000,1576800,1522800,1169400,1157800,24764000,2705200,1153000,603500];
+var etyms = ["Like the Earth, the sun has innumerable names. The name &rsquo;sun&rsquo; derives from old English &rsquo;sunne&rsquo;. This word may be related to the word &rsquo;south&rsquo;.","Mercury was the messenger god of Rome. He had special shoes that allowed him to run really fast! He was also known as Hermes.","Venus was the Roman goddess love and beauty. She was also known as Aphrodite","While many cultures have their own words for the rocky thing beneath our feet, the word &rsquo;Earth&rsquo; comes from proto-Germanic &rsquo;ertho&rsquo;.","Comes from proto-German 'maenon', which means... Moon. Yeh, no big surprises here. The moon's generally big enough that every culture has at least one word for it.","Mars is the name of the Roman god of war. He was also known as Ares, and we get words like &rsquo;Martial&rsquo; from his name.","Named after one of the sons of Ares (the God of War), the god Phobos personified horror. It's also where we get the term &rsquo;phobia&rsquo;!","Deimos was a son of Ares (the God of War), and personified terror. He rode into battle alongside his father and his brother (Phobos).","The word &rsquo;asteroid&rsquo; means &rsquo;star-like&rsquo;.","Ceres was the Roman goddess of farming and fertility. She was also known as Demeter.","Jupiter, whose name comes from a root meaning  &rsquo;god father&rsquo;, was the ruler of the Olympian gods in Roman mythology. He was also known as Zeus","Io was a nymph who Zeus (Jupiter) took a liking to. He had to hide her from his wife (Hera), so he... turned her into a cow. Yeh, he didn&rsquo;t really think this thru.","Europa in mythology fared a little better than Io: she was also seduced by Zeus (Jupiter), but she managed to become the queen of Crete, so that&rsquo;s okay then.","Ganymede was a really good-looking dude who so captured Zeus&rsquo;s (Jupiter&rsquo;s) interest that He made him cup-bearer of Olympus Apparently carrying around other dude&rsquo;s beer mugs was an honor.","Callisto fared slightly better than Io, but far worse than Europa. She had a fling with Zeus (Jupiter), but Hera eventually found out and turned her into a bear (hey, at least it&rsquo;s better than a cow). Zeus then turned her into a constellation, which is pretty cool.","Saturn is the Roman equivalent of Cronos, the dad of Zeus","Titan was named after the mythological pseudo-deities that fought the Greek gods. Good name for the second largest moon in the solar system.","Rhea was the husband of Cronus (Saturn), and the mother of Zeus (Jupiter). Eventually his son overthrew him, and threw Dad into Tartarus (basically, Greek Hell). She was also Cronus&rsquo; sister, so... yeh.","Iapetus was another Titan in Greek mythology. This guy&rsquo;s name meant &rsquo;the piercer&rsquo; and he may have been the god of mortality.","&rsquo;Dione&rsquo; is the name of a bunch of characters in Greek mythology. They include a Titaness, the daughter of Atlas (the dude that holds up the sky), one of the Hyades, and one of the Nereids (sea nymphs).","Uranus, or &rsquo;Ouranos&rsquo; was the granddad of Zeus. ","Titania was the queen of the fairies in Shakespeare&rsquo;s <i>A Midsummer Night&rsquo;s Dream</i>.","Oberon was the king of the fairies in Shakespeare&rsquo;s <i>A Midsummer Night&rsquo;s Dream</i>.","Umbriel was named after a character in Alexander Pope&rsquo;s <i>The Rape of the Lock</i>.","Ariel was named after a character in Alexander Pope&rsquo;s <i>The Rape of the Lock</i>.","Neptune was the Roman god of the ocean. He&rsquo;s also known as Poseidon","Triton is one of the sons of Poseidon (Neptune). He&rsquo;s generally portrayed as a merman.","Pluto was the Roman god of the dead and wealth. He&rsquo;s also Hades","Charon was the ferryman in Greek mythology, who carried the souls of the dead across the river Styx to their final home in  the underworld"];
+var factoids= ["The sun has an orbit of its own! It orbits the center of the galaxy at about 492,126 mph! It also may take a photon up to 170,000 years to reach the surface of the sun from its interior.","Mercury isn&rsquo;t the warmest planet (that title belongs to Venus), but it does have the greatest temperature difference between night and day. At night, it&rsquo;s -280F, while during the day, it&rsquo;s 800F!","Venus, despite its name, is basically a planet of hell. The greenhouse effect has run completely out of control on Venus, raising its temperature to 863F!","The earth is the only planet in the universe that we know has life. That&rsquo;s partially because it's in a special &rsquo;habitable zone&rsquo; where it&rsquo;s just right for water to be liquid.","The moon is the brightest object in the sky, after the sun. It was formed about 4.5 billion years ago when an object the size of Mars smashed into the young Earth! Splash!","Mars likely had liquid water in the past. It&rsquo;s got huge carved canyons that scientists know can only be carved by water!","Like its &rsquo;twin&rsquo; Deimos, Phobos is thought to be a captured asteroid. It also looks vaguely like a moldy potato.","Like its &rsquo;twin&rsquo; Phobos, Deimos is thought to be a captured asteroid. It also looks vaguely like a moldy potato.","Despite its common portrayal, the asteroid belt is mostly empty space. It&rsquo;s pretty unlikely you&rsquo;d hit an asteroid while passing through it.","Ceres was one of the &rsquo;dwarf planets&rsquo; that made scientists question whether or not to call Pluto a planet! It&rsquo;s just too big!","Jupiter is by far the largest of the planets. It also puts out more energy, via magnetism, than it gets from the sun!","Io is the most geologically active body in the solar system, with a huge number of volcanoes. Some of these shoot lava 300km into space! Incidentally, the residential industry on Io is a little lacking.","Europa is basically a giant ball of ice with a rocky center. Scientists think that, between the ice and the rock, there may be a liquid ocean! Care for a swim?","Ganymede is the largest moon in the solar system, at over 41% the diameter of Earth. Like Europa, it may have an ocean beneath its surface!","Callisto is the most heavily-cratered moon in the solar system, with an incredible number of impacts! Poor Callisto!","Saturn is so light that if you could find big enough bath tub, it&rsquo;d actually float!","The second largest moon in the solar system, Titan has a thick methane atmosphere. It rains gasoline on Titan, and some scientists even think there may be life there!","Rhea is possibly the only moon in the solar system with its own ring system.","Iapetus has a number of cool features. For one, it&rsquo;s half bright white and half very dark brown. Also, there&rsquo;s a nearly perfect ridge around the middle of it.","Dione, like many of its neighbors, is basically a dirty snowball. It&rsquo;s mostly ice!","Uranus actually orbits on its side! It&rsquo;s also got far calmer weather than its neighbor, Neptune.","A day on Titania lasts 42 years! And a night lasts the same length? How would you like to wait 84 years between breakfasts?","Oberon may have a small liquid ocean. But this ocean is a mixture of ammonia (cleaning fluid) and water, and is as cold as -143 F!","Umbriel is incredibly dark, and slightly blue. It&rsquo;s most interesting feature is a white-ringed crater called Wunda Crater.","Ariel seems to have been &rsquo;resurfaced&rsquo; at some point in the relatively recent past.","Winds on Neptune can reach up to 1340 mph! The planet also has a &rsquo;great dark spot&rsquo;, like Jupiter&rsquo;s Great Red Spot.","Triton has special volcanoes called &rsquo;cryovolcanoes&rsquo; that erupt ice!","Pluto is the only planet (or &rsquo;dwarf planet&rsquo;) to which we have not yet sent a probe!","Pluto's biggest moon is SO big that some scientists think the two objects should be classified as a &rsquo;binary planet&rsquo;!"];
+var clickOK = 1;//because of a quirk in the menu sys, this is necessary to make sure that if i, for example, click 'ganymede', i'm not click the parent element 'Jupiter'.
+
+
+function facts(whichPlan) {
+   //will display facts
+        //if we've not clicked within the past 1/10th second.
+        dataBoxes[0].innerHTML = allNames[whichPlan];
+        if (whichPlan==0) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from the galatic center';
+        }
+        else if (whichPlan==4) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Earth';
+        }
+        else if (whichPlan>=6 && whichPlan<=7) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Mars';
+        }
+        else if (whichPlan>=10 && whichPlan<=13) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Jupiter';
+        }
+        else if (whichPlan>=15 && whichPlan<=18) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Saturn';
+        }
+        else if (whichPlan>=20 && whichPlan<=23) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Uranus';
+        }
+        else if (whichPlan==25) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Neptune';
+        }
+        else if (whichPlan==28) {
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from Pluto';
+        }
+        else{
+            dataBoxes[1].innerHTML = orbiDist[whichPlan]/1000 + ' km from the Sun';
+        }
+        
+        if (whichPlan!=8) {
+            dataBoxes[2].innerHTML = width[whichPlan]/1000 + ' km wide';
+        }
+        else {
+            dataBoxes[2].innerHTML = width[whichPlan]/500 + ' km wide from Mars-facing side to Jupiter-facing side';
+        }
+        dataBoxes[3].innerHTML = etyms[whichPlan];
+        dataBoxes[4].innerHTML = factoids[whichPlan];
+}
+var magState=0;
+function magMove(which){
+    /*first called fxn in a chain of fxns.
+    1)move #mag to left ('retract' it)
+    2)call scrollMe() with the passed-thru number
+    3)scrollMe() calls magOut(), which moves mag back out
+    4)magOut() calls facts()
+    */
+    if (clickOK) {
+        clickOK=0;
+        var reset = setTimeout(function(){clickOK=1;},100);
+         $('#mag').rotate({angle:40,duration:1000,animateTo:0});
+         $('#mag').delay(500).animate({top:'20%'});
+         $('#mag').delay(550).animate({left:'0px'},1000,function(){scrollMe(which)});
+         
+    }
+   
+    
+    
+}
+function magOut(which) {
+    //moves mag back out again
+    $('#mag').rotate({angle:0,duration:1000,animateTo:40});
+    $('#mag').delay(500).animate({top:'40%'});
+    $('#mag').delay(550).animate({left:'200px'},2000,function(){facts(which)});
+    var allCols = ['yellow','gray','#e1d478','#5cf','#ccc','#933','#c99','#ccc','#c6b78f','#ccc','#fdc','#b90','#dcdcff','#999','#975','#fda','#ca3','#ca9','#ddd','#555','#aff','#ccc','#c1c1c1','#ca4','#2aa','#cba','#999','#d3aa81'];
+    document.getElementById('magLens').style.backgroundColor=allCols[which];
+}
+</script>
+
+    </body>
+</html>

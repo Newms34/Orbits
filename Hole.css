@@ -1,0 +1,89 @@
+html, body {
+    background-image:url('stars.jpg');
+    height:100%;
+    width:100%;
+    background-attachment: fixed;
+}
+#container{
+    /*Main container box*/
+    border-radius:5px;
+    width:90%;
+    margin-left: auto;
+    margin-right:auto;
+    background:#ccc;
+    font-size:larger;
+    font-family:'Comic Sans MS';
+    padding:7px;
+}
+
+#inpForm{
+    border-radius:5px;
+    background:#aaa;
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:10px;
+}
+#BHoleCenter{
+    width:25%;
+    height:25%;
+    background:#fff;
+    left:37%;
+    position:relative;
+    top:37%;
+    border-radius: 50%;
+    box-shadow: 0px 0px 6px #fff,0px 0px 8px #ddf,0px 0px 10px #ccf,0px 0px 12px #aaf,0px 0px 14px #55f,0px 0px 16px #00f;
+}
+.BHole {
+    border-radius:50%;
+    border:2px solid #002;
+    width:95%;
+    height:95%;
+    left:2.5%;
+    top:2.5%;
+    position:relative;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+#BHoleBox{
+    width: 300px;
+    height:300px;
+    background-color: #000;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:2px;
+}
+#Meas{
+    border-left:1px solid black;
+    border-top: 2px solid black;
+    border-right: 1px solid black;
+    width:285px;
+    height:20px;
+    margin-left:auto;
+    margin-right:auto;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+#MeasLn{
+    background:#000;
+    width:2px;
+    height: 25px;
+    margin-left:auto;
+    margin-right:auto;
+}
+#theSchwartz{
+    font-size:smaller;
+    font-style: italic;
+    width:150px;
+    text-align: center;
+    margin-top:50px;
+    margin-left:auto;
+    margin-right:auto;
+}
+#theSchwartz:hover{
+    box-shadow: 0px 0px 2px #fff;
+    border-radius:6%;
+    background-color:#bbb;
+    cursor: pointer;
+}

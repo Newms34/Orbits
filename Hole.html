@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>How Big Is Your Singularity?</title>
+    <link rel='stylesheet' href='Hole.css'>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.0.js"></script>
+    <script src='Hole.js'></script>
+</head>
+
+<body>
+<div id='container'>
+Everything in the universe can potentially make a black hole (a 'singularity'). To do this, the object needs to be compressed below a certain size.<br/>
+Wanna see how much you, or your dog, or your mother, or your city, or your planet would have to be squashed to form a black hole?<hr/>
+<div id='inpForm'>Calculate your Schwarzschild Radius!*<hr/>
+    <label for='Mass'>1) Enter a mass! </label><input type='text' id='Mass'>
+    <br/>2) Now, pick a unit!<select onchange='pickUnit();' id='unitList'>
+        <option value="kg" selected='true'>Kilograms</option>
+        <option value="g">Grams</option>
+        <option value="lbs">Pounds</option>
+        <option value="oz">Ounces</option>
+        <option value="batman">Batman (Shiraz)</option>
+        <option value="sol">Solar Mass</option>
+        <option value="jup">Jupiter Mass</option>
+        <option value="ear">Earth Mass</option>
+    </select><br/>
+    3) Press <input type='button' onclick='calcMe();' value='Calculate!' style='border-radius:5%;'/><br/>
+    <div id='calc'></div>
+    <span style='font-size:7pt;'>*That's the size your object would need to be squashed below to form a black hole!</span>
+</div>
+<!--
+EQUATION: Rs = (2Gm)/C^2 = RADIUS (so 2x = how big it is)
+masses must be converted to kg.
+Batman: 5.7521kg
+Gram: .001kg
+lb: 0.453592kg
+oz: 0.0283495kg
+sol: 1.9891e30kg
+jup: 1.89813e27kg
+ear: 5.97219e24kg
+-->
+<div id='theSchwartz' title='The diameter, for a given object m, below which gravitational collapse takes over'>Schwarzschild Radius</div>
+<div id='MeasLn'></div>
+<div id='Meas'></div>
+<div id='BHoleBox'>
+    <div class='BHole'>
+        <div class='BHole'>
+            <div class='BHole'>
+                <div class='BHole'>
+                    <div class='BHole'>
+                        <div class='BHole'>
+                            <div class='BHole'>
+                                <div class='BHole'>
+                                    <div class='BHole'>
+                                        <div class='BHole'>
+                                            <div class='BHole'>
+                                                <div class='BHole'>
+                                                    <div class='BHole'>
+                                                        <div class='BHole'>
+                                                            <div class='BHole'>
+                                                                <div class='BHole'>
+                                                                    <div class='BHole'>
+                                                                        <div class='BHole'>
+                                                                            <div class='BHole'>
+                                                                                <div class='BHole'>
+                                                                                    <div class='BHole'>
+                                                                                        <div class='BHole'>
+                                                                                            <div class='BHole'>
+                                                                                                <div class='BHole'>
+                                                                                                    <div id='BHoleCenter'></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+So, what's this mean? Well, the Schwarzchild Radius (<a href='http://en.wikipedia.org/wiki/Schwarzschild_radius'>linky</a>) is a magical 'size' for a given mass <i>m</i>,<br/> below which the density of that mass is so great the the escape velocity excedes the speed of light (<i title='299,792,458 m/s, or approximately 6.7e8 mph'>c</i>)!<br/> Below this radius, you form a singularity, or black hole.
+</div>
+</body>
+</html>
